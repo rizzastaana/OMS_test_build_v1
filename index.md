@@ -98,3 +98,67 @@ The On-Time Delivery graph displays a comparison of deliveries over the past 6 m
 The Media Delivery module is available when a Month is selected. It displays the percentage of the total media that has been delivered for the selected Month. It also displays the percentage delivered. 
 
 In the example below, 13% of the media has been delivered so far, with 13% of the deliveries delivered on time.
+
+## Roles and Permissions
+
+OMS Roles and Permissions can be configured in Okta by a super administrator or an LADB user who has Okta OrgAdmin group permissions.  
+
+Roles and Permissions help you manage Okta user groups, including their access to specific database of titles according to their Customer Profile type.  
+
+In Okta, there are four user groups, with the user group definition based on the permission types on each OMS feature:  
+
+|**Feature**   |**Permission Type**   |**Description**           |**OrgAdmin**** |**CustomerAdmin*** |**OrgViewer**** |**CustomerViewer*** |
+|--------------|----------------------|--------------------------|-------------|------------------|--------------|-------------------|
+|Dashboard     |Read                  |Able to view Dashboard    |      X       |         X         |       X       |         X          |     
+|Orders        |Read                  |Able to view orders only (No Order placement or editing of information in an existing order)  |     X        |         X         |        X      |          X         |  
+|              |Write                 |Able to view Orders and Edit Order information, Able to create new Orders (Order Placement)                   |       X      |         X         |        0      |          0         |
+|Jobs          |Read                  |Able to view Jobs only           |      X       |         X         |      X        |         X          |
+|              |Write                      |Able to view and edit job information (e.g. due dates)                   |       X      |       X           |       0       |          0         |
+|Pending Assets        |Read                      |Able to view tasks awaiting assets, task information, and Notes only|      X       |     X             |       X       |          X         |
+|              |Write                      |Able to view and edit Tasks awaiting assets (e.g. Assign Tasks, move statuses, add Notes)                   |       X      |          X        |      X        |          X         |
+|Review Tasks        |Read                      |Able to view Tasks, task information, and Notes only                   |      X       |     X             |       X       |          X         |
+|              |Write                      |Able to view and edit Tasks (e.g Assign Tasks, move statuses, add Notes)                  |       X      |        X          |       X       |         X          |
+|Edit Tasks        |Read                      |Able to view Tasks, task information, and Notes only                   |       X      |       X           |       X       |        X           |
+|                  |Write                      |Able to view and edit Tasks (e.g Assign Tasks, move statuses, add Notes)|      X       |     X             |      X        |         X          |
+|Processing Exceptions        |Read                      |Able to view Tasks in Review status due to Task Failed |      X       |       X           |       X       |         X          |
+|File Manager        |Read                      |Able to browse File Manager and view transfer queue only|     X        |           0       |       X       |         0          |
+|       |Write                      |Able to browse, copy, and move files; Able to create new folders; Able to view the transfer queue                  |      X       |          0        |        X      |        0           |
+|Profiles        |Read                      |Able to view Profiles only                   |      X       |         X         |         X     |          X         |
+|                |Write                      |Able to view, edit, and create new profiles                   |       X      |       0           |       0       |          0         |
+
+
+> *Limited to WRITE (create) or READ (Access/View) permission by the Customer Profile/s allocated to the LADB user.
+> **Can READ/WRITE to any Customer
+
+
+Refer to the following Okta documentation for steps on:
+
+-   [Custom administrator roles](https://help.okta.com/en/prod/Content/Topics/Security/custom-admin-role/custom-admin-roles.htm) (or how to configure granular permissions within a role)
+-   [Standard roles](https://help.okta.com/en/prod/Content/Topics/Security/custom-admin-role/use-standard-roles.htm)
+-   [Users, groups, and profiles](https://help.okta.com/en/prod/Content/Topics/users-groups-profiles/usgp-main.htm)
+-   [Guidance for structuring user groups](https://help.okta.com/en/prod/Content/Topics/Security/administrators-structure-groups.htm)
+-   [Best practices for creating custom role assignments](https://help.okta.com/en/prod/Content/Topics/Security/custom-admin-role/best-practices-custom-admin-roles.htm)
+
+
+## Create a new Okta user
+
+> **Note:** You need to be a super administrator or an LADB user who has Okta OrgAdmin group permissions in order to do this.
+
+Perform the following steps if you are providing OMS access and feature permissions for a new LADB user.
+
+1.  In the Okta Admin Console, go to **Directory > People.**
+2.  Click **Add Person**.
+3.  Select a user type in the User type list or accept the default.
+4.  Complete these fields:
+
+- First name — Enter the user's first name.
+- Last name — Enter the user's last name.
+- Username — Enter the user's user name in email format.
+- Primary email — Enter the user's primary email if it's different from their username.
+- Secondary email — Optional. Enter a secondary email to allow the user to access information when their primary email is unavailable.
+- Groups — Optional. Enter the groups to which the user belongs.
+- Password — Select Set by user to allow the user to set their password, or select Set by admin and enter a password.
+- Send user activation now - Optional. This check box is available when Set by user is selected as the password option. Select this check box to send a user activation email to the user.
+- User must change password on first login — Optional. This check box is selected by default when you select Set by admin as the password option. Clear this check box if you do not want the user to change their password when they first sign in.
+   
+5.  Click Save or click Save and Add Another to add another user.
