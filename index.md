@@ -1,6 +1,4 @@
----
-title: OMS Quickstart
----
+# OMS Quickstart
 
 ## Overview
 
