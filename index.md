@@ -1,5 +1,3 @@
-# OMS Quickstart
-
 ## System Overview
 
 The Operational Management System (OMS) is amedia management platform that controls, monitors, and surfaces media fulfillment data. The OMS enables users to monitor the health of their business, analyze processes, and provide actionable insight via interactive and customizable visualizations.
